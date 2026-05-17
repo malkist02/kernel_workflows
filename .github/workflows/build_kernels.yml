@@ -9,9 +9,9 @@ on:
       - 'README.md'
     branches:
       - test
-  schedule:
-   - cron: "0 12 * * *"
-
+      
+env:
+ TZ: Asia/Jakarta
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,15 +19,15 @@ jobs:
       fail-fast: false
       matrix:
         kernel_config:
-          - kernel_name: "SM6125"
-            kernel_url: "https://github.com/LineageOS/android_kernel_xiaomi_sm6125"
-            kernel_branch: "lineage-23.2"
-            anykernel_branch: "sm6125"
-            tag: "SM6125-23.2"
-            defconfig: "vendor/trinket-perf_defconfig"
-            config: "vendor/xiaomi-trinket.config vendor/laurel_sprout.config"
-            patches_folder: "sm6125"
-            IN_DTBO: "out/arch/arm64/boot/dts/xiaomi/laurel_sprout-trinket-overlay.dtbo"
+#          - kernel_name: "SM6125"
+#            kernel_url: "https://github.com/LineageOS/android_kernel_xiaomi_sm6125"
+#            kernel_branch: "lineage-23.2"
+#            anykernel_branch: "sm6125"
+#            tag: "SM6125-23.2"
+#            defconfig: "vendor/trinket-perf_defconfig"
+#            config: "vendor/xiaomi-trinket.config vendor/laurel_sprout.config"
+#            patches_folder: "sm6125"
+#            IN_DTBO: "out/arch/arm64/boot/dts/xiaomi/laurel_sprout-trinket-overlay.dtbo"
 
           - kernel_name: "SM6125 - Ginkgo"
             device: Ginkgo
@@ -40,25 +40,25 @@ jobs:
             patches_folder: "sm6125"
             IN_DTBO: "out/arch/arm64/boot/dts/xiaomi/ginkgo-trinket-overlay.dtbo"
 
-          - kernel_name: "N18.1"
-            kernel_url: "https://github.com/TheSillyOk/kernel_laurel_sprout"
-            kernel_branch: "lineage-18.1"
-            tag: "NoName-18.1"
-            defconfig: "vendor/laurel_sprout-perf_defconfig"
-            python3_patch: true
+#          - kernel_name: "N18.1"
+#            kernel_url: "https://github.com/TheSillyOk/kernel_laurel_sprout"
+#            kernel_branch: "lineage-18.1"
+#            tag: "NoName-18.1"
+#            defconfig: "vendor/laurel_sprout-perf_defconfig"
+#            python3_patch: true
 
-          - kernel_name: "N-VIC"
-            kernel_url: "https://github.com/TheSillyOk/kernel_laurel_sprout"
-            kernel_branch: "vic"
-            tag: "NoName-VIC"
-            defconfig: "vendor/laurel_sprout-perf_defconfig"
-            python3_patch: true
+#          - kernel_name: "N-VIC"
+#            kernel_url: "https://github.com/TheSillyOk/kernel_laurel_sprout"
+#            kernel_branch: "vic"
+#            tag: "NoName-VIC"
+#            defconfig: "vendor/laurel_sprout-perf_defconfig"
+#            python3_patch: true
 
         build:
-          - type: Normal
-            ksu: false
-            exclude: susfs
-            ak3_suffix: ""
+#          - type: Normal
+#            ksu: false
+#            exclude: susfs
+#            ak3_suffix: ""
 
           - type: KSUN
             ksu: true
